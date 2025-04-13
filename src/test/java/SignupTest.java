@@ -54,6 +54,7 @@ public class SignupTest {
 		test = extent.createTest("Sign Up Positive Test Case");
 		try {
 			driver.get("https://fmi-eccp.onrender.com/login");
+			driver.manage().window().maximize();
 			WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(300));
 			WebElement element = driverWait
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[contains(text(), 'Login')]")));
@@ -72,8 +73,10 @@ public class SignupTest {
 			test.info("entered first name");
 			signupPage.enterLastName("User");
 			test.info("entered last name");
-			signupPage.enterEmail(signupPage.generateUniqueEmail());
-			test.info("generated and entered unique name");
+			String testEmail = signupPage.generateUniqueEmail();
+			signupPage.enterEmail(testEmail);
+			test.info("generated and entered unique name: "+ testEmail);
+			System.out.println(testEmail);
 			signupPage.enterPassword("test@1234");
 			test.info("entered password");
 			signupPage.signUp();

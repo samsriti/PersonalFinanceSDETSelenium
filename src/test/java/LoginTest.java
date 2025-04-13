@@ -48,7 +48,7 @@ public class LoginTest {
 	}
 
 	@Test
-	public void loginTestPositive() throws IOException {
+	public static void loginTestPositive() throws IOException {
 		System.out.println("Running test case because backend is up");
 		test = extent.createTest("Login Test");
 		try {
